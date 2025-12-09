@@ -9,12 +9,18 @@ jobs:
   extract-data-job:
     runs-on: ubuntu-latest
     steps:
+     
+
+      - run: python my_script.py
       - name: checkout code
         uses: actions/checkout@v2
       - name:  run extract.py
         run: python extract.py 
-      - name: show python version
-        run: python --version 
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+         python-version: '3.13' 
+   
 
   transform-data-job:
     runs-on: ubuntu-latest
